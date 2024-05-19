@@ -65,8 +65,8 @@ def main():
     action_dim = train_environment.action_dim
     state_dim = train_environment.state_dim
 
-    cfg.act.update(dict(action_dim=action_dim, state_dim=state_dim))
-    cfg.cri.update(dict(action_dim=action_dim, state_dim=state_dim))
+    # cfg.act.update(dict(action_dim=action_dim, state_dim=state_dim))
+    # cfg.cri.update(dict(action_dim=action_dim, state_dim=state_dim))
     print(cfg.act)
     print(cfg.cri)
     act = build_net(cfg.act)
