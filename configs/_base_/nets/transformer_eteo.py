@@ -1,5 +1,5 @@
 act = dict(
-    type="transformerETEOStacked",
+    type="transformerETEOstacked",
     num_layers=3,
     d_model=156,
     nhead=3,
@@ -10,7 +10,7 @@ act = dict(
 )
 
 cri = dict(
-    type="transformerETEOStacked",
+    type="transformerETEOstacked",
     num_layers=3,
     d_model=156,
     nhead=3,
