@@ -67,8 +67,8 @@ def main():
 
     # cfg.act.update(dict(action_dim=action_dim, state_dim=state_dim))
     # cfg.cri.update(dict(action_dim=action_dim, state_dim=state_dim))
-    print(cfg.act)
-    print(cfg.cri)
+    # print(cfg.act)
+    # print(cfg.cri)
     act = build_net(cfg.act)
     cri = build_net(cfg.cri)
 
