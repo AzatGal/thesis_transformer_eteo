@@ -207,7 +207,7 @@ agent = dict(
 
 trainer = dict(
     type="OrderExecutionETEOTrainer",
-    epochs=2,
+    epochs=3,
     work_dir=work_dir,
     seeds_list=(12345,),
     batch_size=batch_size,
