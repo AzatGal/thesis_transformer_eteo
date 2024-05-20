@@ -34,14 +34,14 @@ class PositionalEncoding(nn.Module):
 
 
 def build_transformer(_num_layers, _d_model, _nhead, _dim_feedforward=2048, _dropout=0.1, _batch_first=False):
-    _decoder = nn.TransformerDecoderLayer(
+    _encoder = nn.TransformerEncoderLayer(
         d_model=_d_model,
         nhead=_nhead,
         dim_feedforward=_dim_feedforward,
         dropout=_dropout,
         batch_first=_batch_first
     )
-    return nn.TransformerDecoder(_decoder, _num_layers)
+    return nn.TransformerEncoder(_encoder, _num_layers)
 
 
 def build_mlp(dims: [int]) -> nn.Sequential:  # MLP (MultiLayer Perceptron)
