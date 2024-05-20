@@ -24,9 +24,11 @@ class PositionalEncoding(nn.Module):
         Arguments:
             x: Tensor, shape ``[seq_len, batch_size, embedding_dim]``
         """
+        """
         print(x.shape)
         print(self.pe.shape)
         print(self.pe[:x.size(0)].shape)
+        """
         x = x + self.pe[:x.size(0)]
         return self.dropout(x)
 
@@ -85,7 +87,7 @@ class ETEOStacked(Net):
 
     def forward(self, x):
         B = x.shape
-        x = x.view(B[-1], B[0], B[-2])
+        x = x.view(B[-2], B[0], B[-1])
 
         x = self.pos_encoding(x)
 
