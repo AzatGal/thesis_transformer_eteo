@@ -176,10 +176,9 @@ class OrderExecutionETEOTrainer(Trainer):
                 save_model(self.checkpoints_path,
                            epoch=epoch,
                            save=self.agent.get_save())
-                # added tab
-            epoch += 1
-            if epoch <= self.epochs:
-                print("Train Episode: [{}/{}]".format(epoch, self.epochs))
+                epoch += 1
+                if epoch <= self.epochs:
+                    print("Train Episode: [{}/{}]".format(epoch, self.epochs))
 
             if epoch > self.epochs:
                 break
