@@ -169,16 +169,17 @@ class OrderExecutionETEOTrainer(Trainer):
 
                     episode_reward_sum += reward
                     if done:
-                        #print("Valid Episode Reward Sum: {:04f}".format(episode_reward_sum))
+                        print("Valid Episode Reward Sum: {:04f}".format(episode_reward_sum))
                         break
                 valid_score_list.append(self.valid_environment.cash_left)
                 save_dict_list.append(save_dict)
                 save_model(self.checkpoints_path,
                            epoch=epoch,
                            save=self.agent.get_save())
-                epoch += 1
-                if epoch <= self.epochs:
-                    print("Train Episode: [{}/{}]".format(epoch, self.epochs))
+                # added tab
+            epoch += 1
+            if epoch <= self.epochs:
+                print("Train Episode: [{}/{}]".format(epoch, self.epochs))
 
             if epoch > self.epochs:
                 break
