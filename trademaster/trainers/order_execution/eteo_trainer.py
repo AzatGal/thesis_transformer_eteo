@@ -104,6 +104,7 @@ class OrderExecutionETEOTrainer(Trainer):
     def train_and_valid(self):
 
         '''init agent.last_state'''
+        """
         state = self.agent.init_states(env=self.train_environment)
         if self.num_envs == 1:
             assert state.shape == (self.time_steps, self.state_dim,)
@@ -116,6 +117,7 @@ class OrderExecutionETEOTrainer(Trainer):
         assert state.shape == (self.num_envs, self.time_steps, self.state_dim)
         assert isinstance(state, torch.Tensor)
         self.agent.last_state = state.detach()
+        """
 
         '''init buffer'''
         if self.if_off_policy:
