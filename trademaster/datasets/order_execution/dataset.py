@@ -59,7 +59,7 @@ class OrderExecutionDataset(CustomDataset):
     def get_styled_intervals_and_gives_new_index(self, data):
         index_by_tick_list = []
         index_by_tick = []
-        date = data['date'].to_list()
+        date = data['system_time'].to_list()
         last_date = date[0]
         date_counter = 0
         index = data['index'].to_list()
