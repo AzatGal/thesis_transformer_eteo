@@ -36,6 +36,7 @@ def parse_args():
 
 
 def main():
+    print("------------")
     args = parse_args()
 
     cfg = Config.fromfile(args.config)
