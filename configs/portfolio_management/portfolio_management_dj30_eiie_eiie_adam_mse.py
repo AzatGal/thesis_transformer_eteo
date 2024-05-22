@@ -53,7 +53,7 @@ loss = dict(type='MSELoss')
 optimizer = dict(type='Adam', lr=0.001)
 
 act = dict(
-    type="EIIETonv",
+    type="EIIETrans",
     d_model=11,
     nhead=4,
     batch_first=True,

@@ -1,5 +1,5 @@
 act = dict(
-    type="EIIETonv",
+    type="EIIETrans",
     d_model=11,
     nhead=4,
     batch_first=True,
