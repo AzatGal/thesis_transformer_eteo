@@ -1,4 +1,14 @@
+act = dict(
+    type="EIIETonv",
+    d_model=11,
+    nhead=4,
+    batch_first=True,
+    num_layers=3,
+    time_steps=10,
+    n_tics=29
+)
 
+"""
 act = dict(
     type = "EIIEConv",
     input_dim = None,
@@ -7,6 +17,7 @@ act = dict(
     kernel_size=3,
     dims = [32]
 )
+"""
 
 cri = dict(
     type = "EIIECritic",

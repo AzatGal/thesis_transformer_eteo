@@ -9,28 +9,42 @@ from torch import Tensor
 @NETS.register_module()
 class EIIETrans(Net):
     def __init__(self,
-                 input_dim,
-                 output_dim = 1,
-                 time_steps = 10,
-                 kernel_size = 3,
-                 dims = (32, )):
-        super(EIIEtrans, self).__init__()
-
-        self.kernel_size = kernel_size
+                 d_model,
+                 nhead,
+                 batch_first=True,
+                 num_layers=3,
+                 time_steps=10,
+                 n_tics=29
+                 ):
+        super(EIIETrans, self).__init__()
+        self.d_model = d_model
+        self.n_tics = n_tics
         self.time_steps = time_steps
 
-        self.net = build_conv2d(
-            dims=[input_dim, *dims, output_dim],
-            kernel_size=[(1, self.kernel_size), (1, self.time_steps - self.kernel_size + 1)]
+        self.encoder_layer = nn.TransformerEncoderLayer(d_model=d_model, nhead=nhead, batch_first=batch_first)
+        self.encoder = nn.TransformerEncoder(encoder_layer=self.encoder_layer, num_layers=num_layers)
+
+        self.linear1 = nn.Linear(d_model, 4 * d_model)
+        self.act = nn.Tanh()
+        self.linear2 = nn.Linear(4 * d_model, n_tics)
+
+        self.cls_token = torch.nn.Parameter(
+            torch.randn(1, 1, d_model)
         )
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
-    def forward(self, x): # (batch_size, num_seqs, action_dim, time_steps, state_dim)
+    def forward(self, x):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
         if len(x.shape) > 4:
             x = x.squeeze(1)
-        x = x.permute(0, 3, 1, 2)
-        x = self.net(x)
-        x = x.view(x.shape[0], -1)
+        x = x.transpose(1, 2)
+        x = x.reshape(1, self.n_tics * self.time_steps, self.d_model)
+        x = torch.cat((self.cls_token, x), 1)
+
+        x = self.encoder(x)
+        x = x[0, 0]
+        x = self.linear1(x)
+        x = self.act(x)
+        x = self.linear2(x)
 
         para = self.para.repeat(x.shape[0], 1)
         x = torch.cat((x, para), dim=1)
@@ -42,10 +56,10 @@ class EIIETrans(Net):
 class EIIEConv(Net):
     def __init__(self,
                  input_dim,
-                 output_dim = 1,
-                 time_steps = 10,
-                 kernel_size = 3,
-                 dims = (32, )):
+                 output_dim=1,
+                 time_steps=10,
+                 kernel_size=3,
+                 dims=(32,)):
         super(EIIEConv, self).__init__()
 
         self.kernel_size = kernel_size
@@ -57,7 +71,7 @@ class EIIEConv(Net):
         )
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
-    def forward(self, x): # (batch_size, num_seqs, action_dim, time_steps, state_dim)
+    def forward(self, x):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
         print("conv", x.shape)
         if len(x.shape) > 4:
             x = x.squeeze(1)
@@ -70,6 +84,7 @@ class EIIEConv(Net):
         x = torch.softmax(x, dim=1)
         return x
 
+
 @NETS.register_module()
 class EIIECritic(Net):
     def __init__(self,
@@ -77,8 +92,8 @@ class EIIECritic(Net):
                  action_dim,
                  output_dim=1,
                  time_steps=10,
-                 num_layers= 1,
-                 hidden_size = 32,
+                 num_layers=1,
+                 hidden_size=32,
                  ):
         super(EIIECritic, self).__init__()
 
@@ -107,5 +122,5 @@ class EIIECritic(Net):
 
         x = torch.cat((x, para, a), dim=1)
         # x = self.linear2(x)
-        x = x.mean(dim = 1, keepdim=True)
+        x = x.mean(dim=1, keepdim=True)
         return x

@@ -34,7 +34,7 @@ data = dict(
 
 environment = dict(type='PortfolioManagementEIIEEnvironment')
 transition = dict(
-    type = "Transition"
+    type="Transition"
 )
 agent = dict(
     type='PortfolioManagementEIIE',
@@ -46,12 +46,23 @@ trainer = dict(
     type='PortfolioManagementEIIETrainer',
     epochs=2,
     work_dir=work_dir,
-    if_remove=False )
+    if_remove=False)
 
 loss = dict(type='MSELoss')
 
 optimizer = dict(type='Adam', lr=0.001)
 
+act = dict(
+    type="EIIETonv",
+    d_model=11,
+    nhead=4,
+    batch_first=True,
+    num_layers=3,
+    time_steps=10,
+    n_tics=29
+)
+
+"""
 act = dict(
     type = "EIIEConv",
     input_dim = None,
@@ -60,13 +71,14 @@ act = dict(
     kernel_size=3,
     dims = [32]
 )
+"""
 
 cri = dict(
-    type = "EIIECritic",
-    input_dim = None,
-    action_dim = None,
+    type="EIIECritic",
+    input_dim=None,
+    action_dim=None,
     output_dim=1,
     time_steps=None,
-    num_layers = 1,
+    num_layers=1,
     hidden_size=32
 )
