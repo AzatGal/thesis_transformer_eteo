@@ -69,7 +69,7 @@ def main():
     time_steps = train_environment.time_steps
 
     cfg.act.update(dict(time_steps=time_steps))
-    cfg.cri.update(dict(time_steps=time_steps))
+    cfg.cri.update(dict(input_dim=input_dim, action_dim= action_dim, time_steps=time_steps))
     """
     cfg.act.update(dict(input_dim=input_dim, time_steps=time_steps))
     cfg.cri.update(dict(input_dim=input_dim, action_dim= action_dim, time_steps=time_steps))
