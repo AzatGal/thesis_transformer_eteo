@@ -26,7 +26,6 @@ class EIIETrans(Net):
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
     def forward(self, x): # (batch_size, num_seqs, action_dim, time_steps, state_dim)
-        print("))))")
         if len(x.shape) > 4:
             x = x.squeeze(1)
         x = x.permute(0, 3, 1, 2)
@@ -59,7 +58,7 @@ class EIIEConv(Net):
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
     def forward(self, x): # (batch_size, num_seqs, action_dim, time_steps, state_dim)
-        print("&&&&&&&")
+        print("conv", x.shape)
         if len(x.shape) > 4:
             x = x.squeeze(1)
         x = x.permute(0, 3, 1, 2)
@@ -95,6 +94,7 @@ class EIIECritic(Net):
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
     def forward(self, x, a):
+        print("conv", x.shape, a.shape)
         if len(x.shape) >= 4:
             x = x.view(x.shape[0], x.shape[1], -1)
         lstm_out, _ = self.lstm(x)
