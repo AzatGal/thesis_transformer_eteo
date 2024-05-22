@@ -28,7 +28,10 @@ class EIIETrans(Net):
         self.act = nn.Tanh()
         self.linear2 = nn.Linear(4 * d_model, n_tics)
 
-        self.cls_token = torch.nn.Parameter(
+        self.pos_embedding = nn.Parameter(
+            torch.randn(1, n_tics * time_steps, d_model)
+        )
+        self.cls_token = nn.Parameter(
             torch.randn(1, 1, d_model)
         )
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
@@ -38,6 +41,7 @@ class EIIETrans(Net):
             x = x.squeeze(1)
         x = x.transpose(1, 2)
         x = x.reshape(1, self.n_tics * self.time_steps, self.d_model)
+        x = x + self.pos_embedding
         x = torch.cat((self.cls_token, x), 1)
 
         x = self.encoder(x)

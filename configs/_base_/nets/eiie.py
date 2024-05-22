@@ -1,7 +1,7 @@
 act = dict(
     type="EIIETrans",
     d_model=11,
-    nhead=4,
+    nhead=11,
     batch_first=True,
     num_layers=3,
     time_steps=10,
