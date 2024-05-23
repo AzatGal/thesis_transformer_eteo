@@ -1,3 +1,4 @@
+"""
 act = dict(
     type="EIIETrans",
     d_model=11,
@@ -17,7 +18,7 @@ act = dict(
     kernel_size=3,
     dims = [32]
 )
-"""
+
 
 cri = dict(
     type = "EIIECritic",
