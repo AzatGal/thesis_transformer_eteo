@@ -43,16 +43,16 @@ class EIIETrans(Net):
         x = x.transpose(1, 2)
         x_size = x.shape
 
-        self.pos_embedding = self.pos_embedding.expand(x_size[0], self.n_tics * self.time_steps, self.d_model)
-        self.cls_token = self.cls_token.expand(x_size[0], 1, self.d_model)
+        pos_embedding = self.pos_embedding.expand(x_size[0], self.n_tics * self.time_steps, self.d_model)
+        cls_token = self.cls_token.expand(x_size[0], 1, self.d_model)
 
         x = x.reshape(x_size[0], x_size[1] * x_size[2], x_size[3])
-
+        """
         print(self.pos_embedding.shape)
         print(self.cls_token.shape)
-
-        x = x + self.pos_embedding
-        x = torch.cat((self.cls_token, x), 1)
+        """
+        x = x + pos_embedding
+        x = torch.cat((cls_token, x), 1)
 
         x = self.encoder(x)
         x = x[0, 0]
