@@ -52,12 +52,15 @@ class EIIETrans(Net):
 
         # print(self.para.shape)
         # para = self.para.repeat(1, 1)  # x.shape[0]
+        x = x.view(x.shape[0], -1)
+        para = self.para.repeat(x.shape[0], 1)
 
         print(x.shape)
-        print(self.para.shape)
+        print(para.shape)
 
-        x = torch.cat((x, self.para))  # , dim=1)
-        x = torch.softmax(x, dim=0)  # , dim=1)
+        x = torch.cat((x, para), dim=1)
+        x = torch.softmax(x, dim=1)
+
         return x
 
 
