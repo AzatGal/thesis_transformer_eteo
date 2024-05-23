@@ -67,7 +67,7 @@ class EIIETrans(Net):
 
         x = torch.cat((x, para), dim=1)
         x = torch.softmax(x, dim=1)
-
+        print(x.shape)
         return x
 
 
@@ -129,7 +129,7 @@ class EIIECritic(Net):
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
     def forward(self, x, a):
-        print("conv", x.shape, a.shape)
+        print("lstm", x.shape, a.shape)
         if len(x.shape) >= 4:
             x = x.view(x.shape[0], x.shape[1], -1)
         lstm_out, _ = self.lstm(x)
