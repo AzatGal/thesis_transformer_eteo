@@ -101,7 +101,6 @@ class EIIEConv(Net):
         para = self.para.repeat(x.shape[0], 1)
         x = torch.cat((x, para), dim=1)
         x = torch.softmax(x, dim=1)
-        print(x.shape)
         return x
 
 
@@ -139,7 +138,7 @@ class EIIECritic(Net):
 
         x = x.view(x.shape[0], -1)
         para = self.para.repeat(x.shape[0], 1)
-
+        print(x.shape, para.shape, a.shape)
         x = torch.cat((x, para, a), dim=1)
         # x = self.linear2(x)
         x = x.mean(dim=1, keepdim=True)
