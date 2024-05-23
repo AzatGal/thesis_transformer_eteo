@@ -50,9 +50,11 @@ class EIIETrans(Net):
         x = self.act(x)
         x = self.linear2(x)
 
-        para = self.para.repeat(x.shape[0], 1)
+        para = self.para.repeat(1, 1)  # x.shape[0]
+        """
         print(x.shape)
         print(para.shape)
+        """
         x = torch.cat((x, para), dim=1)
         x = torch.softmax(x, dim=1)
         return x
