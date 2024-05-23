@@ -40,7 +40,8 @@ class EIIETrans(Net):
         if len(x.shape) > 4:
             x = x.squeeze(1)
         x = x.transpose(1, 2)
-        x = x.reshape(1, self.n_tics * self.time_steps, self.d_model)
+        B = x.shape
+        x = x.reshape(B[0], B[1] * B[2], B[3])
         x = x + self.pos_embedding
         x = torch.cat((self.cls_token, x), 1)
 
@@ -55,12 +56,9 @@ class EIIETrans(Net):
         x = x.view(-1, x.shape[0])
         para = self.para.repeat(x.shape[0], 1)
 
-        print(x.shape)
-        print(para.shape)
-
         x = torch.cat((x, para), dim=1)
         x = torch.softmax(x, dim=1)
-        print(x.shape)
+
         return x
 
 
