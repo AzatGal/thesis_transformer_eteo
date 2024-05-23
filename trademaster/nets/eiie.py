@@ -55,7 +55,7 @@ class EIIETrans(Net):
         x = torch.cat((cls_token, x), 1)
 
         x = self.encoder(x)
-        x = x[0, 0]
+        x = x[:, 0]
         x = self.linear1(x)
         x = self.act(x)
         x = self.linear2(x)
