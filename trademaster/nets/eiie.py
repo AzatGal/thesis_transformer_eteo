@@ -43,8 +43,8 @@ class EIIETrans(Net):
         x = x.transpose(1, 2)
         B = x.shape
 
-        self.pos_embedding = self.pos_embedding.expand(B[0], -1)
-        self.cls_token = self.cls_token.expand(B[0], -1)
+        self.pos_embedding = self.pos_embedding.expand(B[0], self.n_tics * self.time_steps, self.d_model)
+        self.cls_token = self.cls_token.expand(B[0], 1, self.d_model)
 
         x = x.reshape(B[0], B[1] * B[2], B[3])
 
