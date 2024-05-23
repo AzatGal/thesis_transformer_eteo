@@ -101,6 +101,7 @@ class EIIEConv(Net):
         para = self.para.repeat(x.shape[0], 1)
         x = torch.cat((x, para), dim=1)
         x = torch.softmax(x, dim=1)
+        print(x.shape)
         return x
 
 

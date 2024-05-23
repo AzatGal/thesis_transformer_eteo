@@ -51,7 +51,7 @@ trainer = dict(
 loss = dict(type='MSELoss')
 
 optimizer = dict(type='Adam', lr=0.001)
-
+"""
 act = dict(
     type="EIIETrans",
     d_model=11,
@@ -71,7 +71,7 @@ act = dict(
     kernel_size=3,
     dims = [32]
 )
-"""
+
 
 cri = dict(
     type="EIIECritic",
