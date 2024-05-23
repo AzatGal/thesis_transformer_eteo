@@ -39,18 +39,18 @@ class EIIETrans(Net):
     def forward(self, x):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
         if len(x.shape) > 4:
             x = x.squeeze(1)
-        print(x.shape)
+
         x = x.transpose(1, 2)
         B = x.shape
-        if B[0] > 1:
-            self.pos_embedding = self.pos_embedding.repeat(B[0])
-            self.cls_token = self.cls_token.repeat(B[0])
+
+        self.pos_embedding = self.pos_embedding.expand(B[0], -1)
+        self.cls_token = self.cls_token.expand(B[0], -1)
+
         x = x.reshape(B[0], B[1] * B[2], B[3])
-        """
+
         print(self.pos_embedding.shape)
         print(self.cls_token.shape)
-        print(x.shape)
-        """
+
         x = x + self.pos_embedding
         x = torch.cat((self.cls_token, x), 1)
 
