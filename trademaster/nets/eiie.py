@@ -67,7 +67,7 @@ class EIIETrans(Net):
 
         x = torch.cat((x, para), dim=1)
         x = torch.softmax(x, dim=1)
-        # print(x.shape)
+        print(x.shape)
         return x
 
 
