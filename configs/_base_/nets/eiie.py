@@ -1,10 +1,10 @@
-"""
+
 act = dict(
     type="EIIETrans",
     d_model=11,
     nhead=11,
     batch_first=True,
-    num_layers=7,
+    num_layers=2,
     time_steps=10,
     n_tics=29
 )
@@ -18,7 +18,7 @@ act = dict(
     kernel_size=3,
     dims = [32]
 )
-
+"""
 
 cri = dict(
     type = "EIIECritic",
