@@ -44,7 +44,7 @@ agent = dict(
 
 trainer = dict(
     type='PortfolioManagementEIIETrainer',
-    epochs=2,
+    epochs=4,
     work_dir=work_dir,
     if_remove=False)
 
