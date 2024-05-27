@@ -129,18 +129,24 @@ class EIIECritic(Net):
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
 
     def forward(self, x, a):
-        # print("lstm", x.shape, a.shape)
+        print("lstm", x.shape, a.shape)
         if len(x.shape) >= 4:
             x = x.view(x.shape[0], x.shape[1], -1)
+        print(x.shape)
         lstm_out, _ = self.lstm(x)
+        print(x.shape)
         x = self.linear1(lstm_out)
-
+        print(x.shape)
         x = self.act(x)
 
         x = x.view(x.shape[0], -1)
+        print(x.shape)
         para = self.para.repeat(x.shape[0], 1)
-        # print(x.shape, para.shape, a.shape)
+        print(x.shape, para.shape, a.shape)
         x = torch.cat((x, para, a), dim=1)
-        # x = self.linear2(x)
+        x = self.linear2(x)
+        print(x.shape)
         x = x.mean(dim=1, keepdim=True)
+        print(x.shape)
         return x
+
