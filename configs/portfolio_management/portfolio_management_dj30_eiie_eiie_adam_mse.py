@@ -44,13 +44,13 @@ agent = dict(
 
 trainer = dict(
     type='PortfolioManagementEIIETrainer',
-    epochs=3,
+    epochs=2,
     work_dir=work_dir,
     if_remove=False)
 
 loss = dict(type='MSELoss')
 
-optimizer = dict(type='Adam', lr=0.01)
+optimizer = dict(type='Adam', lr=0.001)
 
 act = dict(
     type="EIIETrans",
