@@ -196,7 +196,7 @@ class EIIETransCritic(Net):
 
         x = self.linear3(x)
         x = self.act2(x)
-        x = self.linear4
+        x = self.linear4(x)
         return x
 
 @NETS.register_module()
