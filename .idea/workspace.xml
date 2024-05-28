@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3905fc01-42a6-42b8-a09e-de6606f9564c" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/portfolio_management/train_eiie.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/portfolio_management/train_eiie.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716069899893</updated>
-    </task>
-    <task id="LOCAL-00031" summary="commit">
-      <option name="closed" value="true" />
-      <created>1716485156324</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1716485156324</updated>
     </task>
     <task id="LOCAL-00032" summary="commit">
       <option name="closed" value="true" />
@@ -467,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716916269007</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="commit">
+      <option name="closed" value="true" />
+      <created>1716921835344</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1716921835344</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
