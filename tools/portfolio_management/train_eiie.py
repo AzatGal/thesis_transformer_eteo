@@ -29,14 +29,14 @@ def parse_args():
     parser.add_argument("--config", default=osp.join(ROOT, "configs", "portfolio_management", "portfolio_management_dj30_eiie_eiie_adam_mse.py"),
                         help="download datasets config file path")
     parser.add_argument("--task_name", type=str, default="train")
-    parser.add_argument("--test_dynamic", type=str, default="-1")
+    parser.add_argument("--test_dynamic", type=str, default="1")
     parser.add_argument("--verbose", type=int, default='1')
     args = parser.parse_args()
     return args
 
 
 def main():
-    print("------------")
+
     args = parse_args()
 
     cfg = Config.fromfile(args.config)
