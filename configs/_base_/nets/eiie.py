@@ -9,6 +9,7 @@ act = dict(
     n_tics=29
 )
 """
+"""
 cri = dict(
     type="EIIETransCritic",
     d_model=11,
@@ -18,7 +19,7 @@ cri = dict(
     time_steps=10,
     n_tics=29
 )
-
+"""
 act = dict(
     type="EIIEConv",
     input_dim=None,
@@ -38,3 +39,13 @@ cri = dict(
     hidden_size=32
 )
 """
+
+cri = dict(
+    type="EIIEConvCritic",
+    input_dim=None,
+    output_dim=1,
+    time_steps=10,
+    kernel_size=3,
+    dims=[32]
+)
+
