@@ -25,8 +25,10 @@ class EIIETrans(Net):
         self.encoder = nn.TransformerEncoder(encoder_layer=self.encoder_layer, num_layers=num_layers)
 
         self.linear1 = nn.Linear(d_model, 4 * d_model)
-        self.act = nn.Tanh()
+        self.act1 = nn.Tanh()
         self.linear2 = nn.Linear(4 * d_model, n_tics)
+        self.act2 = nn.Tanh()
+        self.linear3 = nn.Linear(n_tics + 1, n_tics + 1)
 
         self.pos_embedding = nn.Parameter(
             torch.randn(1, n_tics * time_steps, d_model)
@@ -54,11 +56,15 @@ class EIIETrans(Net):
         x = self.encoder(x)
         x = x[:, 0]
         x = self.linear1(x)
-        x = self.act(x)
+        x = self.act1(x)
         x = self.linear2(x)
 
         para = self.para.repeat(x.shape[0], 1)
         x = torch.cat((x, para), dim=1)
+
+        x = self.act2(x)
+        x = self.linear3(x)
+
         x = torch.softmax(x, dim=1)
         return x
 
@@ -169,6 +175,7 @@ class EIIETransCritic(Net):
         self.linear3 = nn.Linear(2 * (n_tics + 1), d_model)
         self.act2 = nn.Tanh()
         self.linear4 = nn.Linear(d_model, 1)
+        self.act3 = nn.Tanh()
 
     def forward(self, x, a):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
         if len(x.shape) > 4:
@@ -193,6 +200,8 @@ class EIIETransCritic(Net):
 
         para = self.para.repeat(x.shape[0], 1)
         x = torch.cat((x, para, a), dim=1)
+
+        x = self.act3(x)
 
         x = self.linear3(x)
         x = self.act2(x)
