@@ -200,6 +200,7 @@ class EIIETransCritic(Net):
 class EIIEConvCritic(Net):
     def __init__(self,
                  input_dim,
+                 action_dim,
                  output_dim=1,
                  time_steps=10,
                  kernel_size=3,
@@ -214,7 +215,7 @@ class EIIEConvCritic(Net):
             kernel_size=[(1, self.kernel_size), (1, self.time_steps - self.kernel_size + 1)]
         )
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
-        self.linear = nn.Linear(2 * 30, 1)
+        self.linear = nn.Linear(2 * (action_dim + 1), 1)
 
     def forward(self, x, a):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
         if len(x.shape) > 4:
