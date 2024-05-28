@@ -1,4 +1,4 @@
-
+"""
 act = dict(
     type="EIIETrans",
     d_model=11,
@@ -8,7 +8,7 @@ act = dict(
     time_steps=10,
     n_tics=29
 )
-
+"""
 cri = dict(
     type="EIIETransCritic",
     d_model=11,
@@ -18,7 +18,7 @@ cri = dict(
     time_steps=10,
     n_tics=29
 )
-"""
+
 act = dict(
     type="EIIEConv",
     input_dim=None,
@@ -27,7 +27,7 @@ act = dict(
     kernel_size=3,
     dims=[32]
 )
-
+"""
 cri = dict(
     type="EIIECritic",
     input_dim=None,
