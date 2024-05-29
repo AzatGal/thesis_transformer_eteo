@@ -44,7 +44,7 @@ agent = dict(
 
 trainer = dict(
     type='PortfolioManagementEIIETrainer',
-    epochs=3,
+    epochs=2,
     work_dir=work_dir,
     if_remove=False)
 
@@ -69,7 +69,7 @@ cri = dict(
     d_model=11,
     nhead=11,
     batch_first=True,
-    num_layers=4,
+    num_layers=1,
     time_steps=10,
     n_tics=29
 )
