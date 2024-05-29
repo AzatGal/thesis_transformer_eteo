@@ -196,7 +196,7 @@ class EIIETransCritic(Net):
         para = self.para.repeat(x.shape[0], 1)
         x = torch.cat((x, para, a), dim=1)
 
-        x = self.act3(x)
+        # x = self.act3(x)
 
         x = self.linear3(x)
         x = self.act2(x)
