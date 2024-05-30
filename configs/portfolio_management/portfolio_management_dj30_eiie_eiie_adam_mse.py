@@ -50,7 +50,7 @@ trainer = dict(
 
 loss = dict(type='MSELoss')
 
-optimizer = dict(type='Adam', lr=0.001)
+optimizer = dict(type='Adam', lr=0.01)  # 0.001
 
 
 act = dict(

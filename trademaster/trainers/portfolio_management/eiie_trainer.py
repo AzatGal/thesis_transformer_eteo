@@ -43,7 +43,7 @@ class PortfolioManagementEIIETrainer(Trainer):
         self.if_save_buffer = get_attr(kwargs, "if_save_buffer", False)
 
         if self.if_off_policy:  # off-policy
-            self.batch_size = int(get_attr(kwargs, "batch_size", 128))  # 64
+            self.batch_size = int(get_attr(kwargs, "batch_size", 64))
             self.horizon_len = int(get_attr(kwargs, "horizon_len", 512))
             self.buffer_size = int(get_attr(kwargs, "buffer_size", 1000))
         else:  # on-policy
