@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3905fc01-42a6-42b8-a09e-de6606f9564c" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trademaster/trainers/portfolio_management/eiie_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/trademaster/trainers/portfolio_management/eiie_trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/portfolio_management/portfolio_management_dj30_eiie_eiie_adam_mse.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/portfolio_management/portfolio_management_dj30_eiie_eiie_adam_mse.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716069899893</updated>
-    </task>
-    <task id="LOCAL-00045" summary="commit">
-      <option name="closed" value="true" />
-      <created>1716493843556</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1716493843556</updated>
     </task>
     <task id="LOCAL-00046" summary="commit">
       <option name="closed" value="true" />
@@ -467,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717094492019</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="commit">
+      <option name="closed" value="true" />
+      <created>1717096157152</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1717096157152</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
