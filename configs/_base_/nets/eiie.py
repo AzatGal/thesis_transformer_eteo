@@ -4,7 +4,7 @@ act = dict(
     d_model=11,
     nhead=11,
     batch_first=True,
-    num_layers=1,
+    num_layers=2,
     time_steps=10,
     n_tics=29
 )
