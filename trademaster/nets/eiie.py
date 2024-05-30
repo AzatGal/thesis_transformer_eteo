@@ -21,7 +21,9 @@ class EIIETrans(Net):
         self.n_tics = n_tics
         self.time_steps = time_steps
 
-        self.encoder_layer = nn.TransformerEncoderLayer(d_model=d_model, nhead=nhead, batch_first=batch_first)
+        self.encoder_layer = nn.TransformerEncoderLayer(
+            d_model=d_model, nhead=nhead, batch_first=batch_first, norm_first=True
+        )
         self.encoder = nn.TransformerEncoder(encoder_layer=self.encoder_layer, num_layers=num_layers)
 
         self.linear1 = nn.Linear(d_model, 4 * d_model)
@@ -153,7 +155,9 @@ class EIIETransCritic(Net):
         self.n_tics = n_tics
         self.time_steps = time_steps
 
-        self.encoder_layer = nn.TransformerEncoderLayer(d_model=d_model, nhead=nhead, batch_first=batch_first)
+        self.encoder_layer = nn.TransformerEncoderLayer(
+            d_model=d_model, nhead=nhead, batch_first=batch_first, norm_first=True
+        )
         self.encoder = nn.TransformerEncoder(encoder_layer=self.encoder_layer, num_layers=num_layers)
 
         self.linear1 = nn.Linear(d_model, 4 * d_model)
