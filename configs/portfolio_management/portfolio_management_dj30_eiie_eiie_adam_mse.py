@@ -44,13 +44,13 @@ agent = dict(
 
 trainer = dict(
     type='PortfolioManagementEIIETrainer',
-    epochs=3,
+    epochs=2,
     work_dir=work_dir,
     if_remove=False)
 
 loss = dict(type='MSELoss')
 
-optimizer = dict(type='Adam', lr=0.0047)  # 0.005
+optimizer = dict(type='Adam', lr=0.005)  # 0.005
 
 
 act = dict(
@@ -59,7 +59,7 @@ act = dict(
     nhead=11,
     batch_first=True,
     num_layers=1,
-    time_steps=10,
+    time_steps=15,
     n_tics=29
 )
 
@@ -70,7 +70,7 @@ cri = dict(
     nhead=11,
     batch_first=True,
     num_layers=2,
-    time_steps=10,
+    time_steps=15,
     n_tics=29
 )
 
