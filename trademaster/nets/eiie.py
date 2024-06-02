@@ -175,7 +175,7 @@ class EIIETransCritic(Net):
         self.act2 = nn.Tanh()
         self.linear4 = nn.Linear(d_model, 1)
 
-        self.Linear5 = nn.Linear(1024, d_model)
+        self.linear5 = nn.Linear(1024, d_model)
         self.act3 = nn.Tanh()
 
     def forward(self, x, a):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
