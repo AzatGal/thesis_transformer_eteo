@@ -171,9 +171,9 @@ class EIIETransCritic(Net):
             torch.randn(1, 1, d_model)
         )
         self.para = torch.nn.Parameter(torch.ones(1).requires_grad_())
-        self.linear3 = nn.Linear(2 * (n_tics + 1), 4 * d_model)  # d_model
+        self.linear3 = nn.Linear(2 * (n_tics + 1), d_model)  # d_model
         self.act2 = nn.Tanh()
-        self.linear4 = nn.Linear(4 * d_model, 1)  # d_model
+        self.linear4 = nn.Linear(d_model, 1)  # d_model
 
     def forward(self, x, a):  # (batch_size, num_seqs, action_dim, time_steps, state_dim)
         if len(x.shape) > 4:
