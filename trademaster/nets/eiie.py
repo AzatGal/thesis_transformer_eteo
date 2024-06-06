@@ -22,7 +22,7 @@ class EIIETrans(Net):
         self.time_steps = time_steps
 
         self.encoder_layer = nn.TransformerEncoderLayer(
-            d_model=d_model, nhead=nhead, batch_first=batch_first, norm_first=True, dropout=0
+            d_model=d_model, nhead=nhead, batch_first=batch_first, norm_first=True  # , dropout=0
         )
         self.encoder = nn.TransformerEncoder(encoder_layer=self.encoder_layer, num_layers=num_layers)
 
@@ -156,7 +156,7 @@ class EIIETransCritic(Net):
         self.time_steps = time_steps
 
         self.encoder_layer = nn.TransformerEncoderLayer(
-            d_model=d_model, nhead=nhead, batch_first=batch_first, norm_first=True, dropout=0
+            d_model=d_model, nhead=nhead, batch_first=batch_first, norm_first=True  # , dropout=0
         )
         self.encoder = nn.TransformerEncoder(encoder_layer=self.encoder_layer, num_layers=num_layers)
 
