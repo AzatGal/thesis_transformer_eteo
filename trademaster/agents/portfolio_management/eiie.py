@@ -135,7 +135,9 @@ class PortfolioManagementEIIE(AgentBase):
         next_state = transition.next_state
 
         a = self.act(state)
+        print("a", a)
         q = self.cri(state, a)
+        print("q", q)
         a_loss = -torch.mean(q)
 
         self.act_optimizer.zero_grad()
@@ -143,14 +145,18 @@ class PortfolioManagementEIIE(AgentBase):
         self.act_optimizer.step()
 
         a_ = self.act(next_state)
+        print("a_", a_)
         q_ = self.cri(next_state, a_.detach())
+        print("q_", q_)
         q_target = reward + self.gamma * q_
         q_eval = self.cri(state, action.detach())
+        print("q_eval", q_eval)
 
         td_error = self.criterion(q_target.detach(), q_eval)
+        print("td_error", td_error)
 
         self.cri_optimizer.zero_grad()
         td_error.backward()
         self.cri_optimizer.step()
-
+        print("td_error, q_target", td_error, q_target)
         return td_error, q_target
