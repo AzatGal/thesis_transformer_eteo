@@ -4,7 +4,7 @@ act = dict(
     d_model=11,
     nhead=11,
     batch_first=True,
-    num_layers=1,
+    num_layers=2,  # 1
     time_steps=10,
     n_tics=29
 )
@@ -15,7 +15,7 @@ cri = dict(
     d_model=11,
     nhead=11,
     batch_first=True,
-    num_layers=2,
+    num_layers=3,   # 2
     time_steps=10,
     n_tics=29
 )
