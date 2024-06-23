@@ -52,7 +52,7 @@ loss = dict(type='MSELoss')
 
 optimizer = dict(type='Adam', lr=0.005)  # 0.005
 
-
+'''
 act = dict(
     type="EIIETrans",
     d_model=11,
@@ -94,7 +94,7 @@ cri = dict(
     num_layers=1,
     hidden_size=32
 )
-'''
+
 '''
 cri = dict(
     type="EIIEConvCritic",
